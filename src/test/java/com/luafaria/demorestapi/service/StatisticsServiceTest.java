@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Collections;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
@@ -28,17 +28,17 @@ class StatisticsServiceTest {
     void insertTransaction() {
         var amount = BigDecimal.valueOf(5.7);
         var timestamp = LocalDateTime.now();
-        Transaction transaction = Transaction.builder().amount(amount).timestamp(timestamp).build();
+        Transaction transaction = Transaction.builder().amount(amount).build();
         TransactionItem transactionItem = TransactionItem.builder()
                 .amount(amount)
                 .timestamp(timestamp)
                 .build();
         when(mongoTemplate.save(transactionItem, "transaction")).thenReturn(transactionItem);
         var actualTransactionItem = statisticsService.insertTransaction(transaction);
-        assertEquals(actualTransactionItem.getTimestamp().toString(), transaction.getTimestamp().toString());
         assertEquals(actualTransactionItem.getAmount(), transaction.getAmount());
 
     }
+
     @Test
     void getStatistics() {
         var amount = BigDecimal.valueOf(5.7);

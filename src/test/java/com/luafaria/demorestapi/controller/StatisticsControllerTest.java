@@ -12,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.data.mongo.AutoConfigureDataM
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
@@ -19,13 +20,14 @@ import java.time.LocalDateTime;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc
 @AutoConfigureDataMongo
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@ActiveProfiles("test")
 public class StatisticsControllerTest {
     @Autowired
     private TransactionRepository transactionRepository;
@@ -66,12 +68,12 @@ public class StatisticsControllerTest {
                                         asJsonString(
                                                 Transaction.builder()
                                                         .amount(BigDecimal.valueOf(10.0))
-                                                        .timestamp(timestamp)
                                                         .build()))
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
-                .andExpect(content().json("{'amount':10.0,'timestamp':'%s'}".formatted(timestamp)));
+                .andExpect(jsonPath("$.amount").value(BigDecimal.valueOf(10.0)));
+
     }
 
     public static String asJsonString(final Object obj) {

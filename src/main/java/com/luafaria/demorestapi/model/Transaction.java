@@ -1,16 +1,14 @@
 package com.luafaria.demorestapi.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Builder
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Transaction {
     BigDecimal amount;
-    LocalDateTime timestamp;
 }

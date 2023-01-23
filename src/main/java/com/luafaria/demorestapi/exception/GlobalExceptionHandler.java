@@ -1,6 +1,6 @@
-package com.luanafaria.demoaccount.exception;
+package com.luafaria.demorestapi.exception;
 
-import com.luanafaria.demoaccount.payload.ErrorDetails;
+import com.luafaria.demorestapi.model.ErrorDetails;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

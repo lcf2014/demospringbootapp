@@ -12,10 +12,10 @@ import java.time.LocalDateTime;
 @Builder
 @Getter
 public class TransactionItem {
-  @Id
-  String id;
+    @Id
+    String id;
 
-  private BigDecimal amount;
+    private BigDecimal amount;
 
-  private LocalDateTime timestamp;
+    private LocalDateTime timestamp;
 }

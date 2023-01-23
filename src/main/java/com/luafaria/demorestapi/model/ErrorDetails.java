@@ -1,4 +1,4 @@
-package com.luanafaria.demoaccount.payload;
+package com.luafaria.demorestapi.model;
 
 import java.util.Date;
 

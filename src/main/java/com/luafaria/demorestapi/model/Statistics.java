@@ -1,17 +1,18 @@
 package com.luafaria.demorestapi.model;
 
+import lombok.*;
+
 import java.math.BigDecimal;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
 
 @Builder
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Statistics {
-  BigDecimal sum;
-  BigDecimal avg;
-  BigDecimal min;
-  BigDecimal max;
-  Long count;
+    BigDecimal sum;
+    BigDecimal avg;
+    BigDecimal min;
+    BigDecimal max;
+    Long count;
 }

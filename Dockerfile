@@ -1,5 +1,5 @@
-FROM openjdk:17-oracle
+FROM adoptopenjdk:11-jre-hotspot
+ARG JAR_FILE=target/demo-rest-api-0.0.1-SNAPSHOT.jar
+COPY ${JAR_FILE} application.jar
 EXPOSE 8080
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java", "-jar", "application.jar"]

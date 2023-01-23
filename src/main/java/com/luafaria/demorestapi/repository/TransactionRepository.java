@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface TransactionRepository extends MongoRepository<TransactionItem, String> {
 
-  @Query(" $gt: new Date(dateq.getTime() - 6000")
-  List<Transaction> findAllForLast60Seconds();
+    @Query(" $gt: new Date(dateq.getTime() - 6000")
+    List<Transaction> findAllForLast60Seconds();
 }
