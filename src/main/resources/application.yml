@@ -1,6 +1,0 @@
-spring:
-  data:
-  mongodb:
-    database: TransactionDB
-    host: mongo_db
-    port: 27017

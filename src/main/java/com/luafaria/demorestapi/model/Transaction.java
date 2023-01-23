@@ -11,6 +11,6 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class Transaction {
-  BigDecimal amount;
-  LocalDateTime timestamp;
+    BigDecimal amount;
+    LocalDateTime timestamp;
 }
